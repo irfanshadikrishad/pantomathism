@@ -1,0 +1,129 @@
+:root {
+    --background: whitesmoke;
+    --color: #252525;
+    --primary: slateblue;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--color);
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+nav {
+    padding: 20px 0;
+    border-bottom: 1px solid white;
+}
+
+.nav__logo {
+    width: 35px;
+}
+
+.nav_btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav_btns>a {
+    text-decoration: none;
+    color: var(--color);
+    font-weight: 500;
+}
+
+.nav_btns>button {
+    border: none;
+    font-size: 1rem;
+    color: var(--color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__register {
+    background-color: var(--primary);
+    color: var(--background) !important;
+    padding: 7px 49px;
+    border-radius: 3px;
+}
+
+.nav_categories {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 80px;
+    background-color: white;
+    /* padding: 20px 50px; */
+}
+
+.nav_categories>a {
+    text-decoration: none;
+    color: var(--color);
+    padding: 10px 50px;
+    border-bottom: 1px solid var(--background);
+}
+
+.nav_categories>a:hover {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+.home {
+    padding: 20px 0;
+}
+
+.card__main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.card__img {
+    width: 100%;
+}
+
+.home__card {
+    padding: 10px;
+    background-color: white;
+}
+
+.card__h1 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+p.tags {
+    color: var(--primary);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.home__card>a {
+    text-decoration: none;
+}
+
+.card__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card__date {
+    font-style: italic;
+}
