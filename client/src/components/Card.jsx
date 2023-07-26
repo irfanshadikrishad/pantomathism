@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 
 export default function Card(props) {
     return (
-
         <div className="home__card">
             <img className="card__img" src={props.src} alt="place" />
             <a href="/full-blog-link"><h1 className="card__h1">{props.title}</h1></a>

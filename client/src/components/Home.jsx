@@ -16,6 +16,18 @@ export default function Home() {
                     details="Illum impedit explicabo aut delectus, commodi neque."
                     title="Lorem ipsum"
                     src="https://placehold.co/800x350" />
+                <Card
+                    date="25 July, 2023"
+                    tag="history"
+                    details="Illum impedit explicabo aut delectus, commodi neque."
+                    title="Lorem ipsum"
+                    src="https://placehold.co/800x350" />
+                <Card
+                    date="25 July, 2023"
+                    tag="history"
+                    details="Illum impedit explicabo aut delectus, commodi neque."
+                    title="Lorem ipsum"
+                    src="https://placehold.co/800x350" />
             </div>
         </section>
     )

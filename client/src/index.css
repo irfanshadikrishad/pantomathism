@@ -49,6 +49,11 @@ nav {
     cursor: pointer;
 }
 
+a.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -58,7 +63,7 @@ nav {
 .nav__register {
     background-color: var(--primary);
     color: var(--background) !important;
-    padding: 7px 49px;
+    padding: 7px 25px;
     border-radius: 3px;
 }
 
@@ -83,7 +88,8 @@ nav {
     color: var(--background);
 }
 
-.home {
+.home,
+.page {
     padding: 20px 0;
 }
 
@@ -95,10 +101,12 @@ nav {
 
 .card__img {
     width: 100%;
+    border-radius: 10px;
 }
 
 .home__card {
-    padding: 10px;
+    padding: 21px;
+    border-radius: 10px;
     background-color: white;
 }
 
@@ -126,4 +134,136 @@ p.tags {
 
 .card__date {
     font-style: italic;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.about__right>img {
+    width: 400px;
+}
+
+.about__left>p {
+    font-size: 1.3rem;
+}
+
+.about__right {
+    text-align: center;
+}
+
+.register__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: white;
+    gap: 100px;
+}
+
+.register__left {
+    display: flex;
+    flex-direction: column;
+}
+
+.register__left>input[type="text"],
+.register__left>input[type="email"],
+.register__left>input[type="password"] {
+    width: auto;
+    padding: 8px 10px;
+    outline: none;
+    border: none;
+    background-color: var(--background);
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.register__left>input[type="file"] {
+    font-size: 1rem;
+}
+
+.register__left>button {
+    width: 182px;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 600;
+    padding: 8px 10px;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.register__right>img {
+    width: 250px;
+}
+
+.the__title {
+    color: var(--primary);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.login__left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__left>img {
+    width: 250px;
+}
+
+.login__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+form.login__right {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    gap: 5px;
+}
+
+.login__right>button {
+    width: 250px;
+    font-size: 1rem;
+    border: none;
+    padding: 10px 10px;
+    background-color: var(--primary);
+    color: var(--background);
+    font-weight: 700;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.login__right>input {
+    padding: 10px 10px;
+    border: none;
+    outline: none;
+    background-color: var(--background);
+    font-size: 1rem;
+}
+
+.login__register {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 80%;
+}
+
+.login__register>a {
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 80%;
 }
