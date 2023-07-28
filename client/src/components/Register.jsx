@@ -16,12 +16,46 @@ export default function Register() {
             ...user, [name]: value
         })
     }
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    function errorToast(error) {
+        toast.error(`${error}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const { name, email, password } = user;
+        if (name === "" || email === "" || password === "") {
+            errorToast("Fill the form properly");
+            return;
+        } else {
+            const response = await fetch("http://localhost:3001/registration", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name, email, password
+                }),
+                credentials: "include"
+            })
+            const data = await response.json();
+            if (response.status === 201 || !data) {
+                navigate("/login");
+            } else {
+                errorToast(`${data.message}`);
+            }
+        }
     }
     return (
         <div className="container page">
-            <form method="post" className="register__main">
+            <form method="post" onSubmit={handleSubmit} className="register__main">
                 <div className="register__left">
                     <h1 className="the__title">Register</h1>
                     <input onChange={handleInput}
@@ -41,8 +75,13 @@ export default function Register() {
                         placeholder="Password" />
                     <button
                         type="submit"
-                        onSubmit={handleSubmit}>Register</button>
-                    <p className="login__register">Already have an account? <NavLink to="/login">Login</NavLink> </p>
+                        onSubmit={handleSubmit}>
+                        Register
+                    </button>
+                    <p className="login__register">
+                        Already have an account?
+                        <NavLink to="/login">Login</NavLink>
+                    </p>
                 </div>
                 <div className="register__right">
                     <img src="/favicon.png" alt="favv" draggable="false" />
