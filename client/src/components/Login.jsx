@@ -1,9 +1,48 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    function errorToast(error) {
+        toast.error(`${error}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (email === "" || password === "") {
+            errorToast("Fill the form properly.");
+        } else {
+            const response = await fetch("http://localhost:3001/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email, password
+                }),
+                credentials: "include"
+            })
+            const data = await response.json();
+            if (response.status === 200) {
+                navigate('/');
+            } else {
+                errorToast(`${data.message}`);
+            }
+        }
+    }
 
     return (
         <div className="container page login">
@@ -11,7 +50,7 @@ export default function Login() {
                 <div className="login__left">
                     <img draggable="false" src="/favicon.png" alt="" />
                 </div>
-                <form method="post" className="login__right">
+                <form onSubmit={handleSubmit} method="post" className="login__right">
                     <h1 className="the__title">Login</h1>
                     <input
                         value={email}
@@ -29,10 +68,14 @@ export default function Login() {
                         name="password"
                         type="password"
                         placeholder="Password" />
-                    <button type="submit">Login</button>
-                    <p className="login__register">Don't have an account? <NavLink to="/register">Register</NavLink> </p>
+                    <button onSubmit={handleSubmit} type="submit">Login</button>
+                    <p className="login__register">
+                        Don't have an account?
+                        <NavLink to="/register">Register</NavLink>
+                    </p>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     )
 }
