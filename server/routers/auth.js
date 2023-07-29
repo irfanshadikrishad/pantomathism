@@ -71,4 +71,9 @@ router.get('/profile', authorize, (req, res) => {
     res.json(req.rootUser);
 })
 
+router.get('/data', authorize, (req, res) => {
+    res.json(req.rootUser);
+})
+
+
 module.exports = router;

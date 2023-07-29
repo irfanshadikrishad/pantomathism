@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export default function Profile() {
     const navigate = useNavigate();
@@ -31,7 +31,15 @@ export default function Profile() {
     return (
         <div className="container page">
             <h1 className="the__title">Profile</h1>
-            <p>{user._id}</p>
+            <div className="content">
+                <p><span>ID:</span>{user._id}</p>
+                <p><span>Name:</span>{user.name}</p>
+                <p><span>Email:</span>{user.email}</p>
+            </div>
+            <div className="logout__btns">
+                <NavLink to="/create" className="logout">Post a blog</NavLink>
+                <NavLink to="/logout" className="logout">Log Out</NavLink>
+            </div>
         </div>
     )
 }

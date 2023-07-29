@@ -267,3 +267,35 @@ form.login__right {
     font-weight: 600;
     opacity: 80%;
 }
+
+.logout {
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    text-decoration: none;
+    color: var(--background);
+    background-color: var(--primary);
+    padding: 8px 40px;
+}
+
+.content {
+    margin: 20px 0;
+}
+
+.content>p {
+    font-size: 1rem;
+    font-weight: 600;
+
+}
+
+.content>p>span {
+    color: var(--primary);
+    font-style: italic;
+    margin-right: 10px;
+}
+
+.logout__btns {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
