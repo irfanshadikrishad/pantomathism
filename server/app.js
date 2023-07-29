@@ -4,6 +4,7 @@ const cors = require('cors');
 const express = require('express');
 const { connect } = require('mongoose');
 const auth = require('./routers/auth');
+const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 3001;
 const MONGO = process.env.MONGO;
@@ -23,6 +24,7 @@ app.use(cors({
 }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(auth);
 
 app.listen(PORT, () => {

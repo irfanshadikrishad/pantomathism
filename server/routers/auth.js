@@ -1,9 +1,13 @@
 const express = require('express');
 const { hash, compare } = require('bcrypt');
+const chalk = require('chalk');
 const router = express.Router();
 const User = require('../models/user');
+const authorize = require('../middleware/authorize');
 
 const SALT = Number(process.env.SALT);
+const resolve = chalk.hex('#ACFADF');
+const reject = chalk.hex('#FF6666');
 
 router.post('/registration', async (req, res) => {
     const { name, email, password } = await req.body;
@@ -13,7 +17,7 @@ router.post('/registration', async (req, res) => {
         } else {
             hash(password, SALT, function (error, hash) {
                 if (error) {
-                    console.log(`[!ok] ${error}`);
+                    console.log(reject(`[!ok] ${error}`));
                     res.status(400).json({ message: "Salting Error" });
                 } else {
                     const user = new User({
@@ -43,7 +47,16 @@ router.post('/login', async (req, res) => {
                     res.status(400).json({ message: "Decrypt Error" });
                 } else {
                     if (email === data.email && result) {
-                        res.status(200).json({ message: "Logged in" });
+                        data.genJWT().then(token => {
+                            console.log(resolve(`[ok] JWT : ${token}`));
+                            res.status(200).cookie(
+                                "JWT", token, {
+                                expires: new Date(Date.now() + 25892000000),
+                                httpOnly: true
+                            }).json({ message: "Logged In" });
+                        }).catch(err => {
+                            console.log(reject(`[!ok] JWT Failed`));
+                        })
                     } else {
                         res.status(400).json({ message: "Invalid Credentials!" })
                     }
@@ -51,6 +64,11 @@ router.post('/login', async (req, res) => {
             })
         }
     })
+})
+
+router.get('/profile', authorize, (req, res) => {
+    console.log(resolve(`[ok] rootUser (${req.rootUser._id})`));
+    res.json(req.rootUser);
 })
 
 module.exports = router;

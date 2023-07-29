@@ -37,6 +37,7 @@ export default function Login() {
             })
             const data = await response.json();
             if (response.status === 200) {
+                
                 navigate('/');
             } else {
                 errorToast(`${data.message}`);
