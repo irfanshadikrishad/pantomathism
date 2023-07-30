@@ -28,7 +28,7 @@ export default function Logout() {
         }).then(res => {
             const data = res.json();
             if (res.status === 200) {
-                navigate('/');
+                navigate('/', { replace: true });
             } else {
                 errorToast(data.message);
             }
@@ -43,7 +43,7 @@ export default function Logout() {
         <>
             <div className="container page">
                 <h1>Logging Out ...</h1>
-                <ToastContainer/>
+                <ToastContainer />
             </div>
         </>
     )

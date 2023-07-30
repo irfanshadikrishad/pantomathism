@@ -299,3 +299,45 @@ form.login__right {
     align-items: center;
     gap: 5px;
 }
+
+.create__content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.create__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+}
+
+.create__content>input,
+.create__content>textarea,
+.create__info>input {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+
+.create__content>textarea {
+    height: 100px;
+}
+
+form.create__form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.create__form>button {
+    width: 150px;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 5px 10px;
+    cursor: pointer;
+}

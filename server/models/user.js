@@ -19,6 +19,32 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    blog: [{
+        name: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true
+        },
+        categories: {
+            type: String,
+            required: true
+        },
+        title: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        date: {
+            type: Date,
+            default: Date.now
+        }
+    }],
     tokens: [{
         token: {
             type: String,
@@ -43,6 +69,20 @@ userSchema.methods.genJWT = async function () {
     } catch (error) {
         console.log(reject(`[!ok] genJWT failure ${error}`));
     }
+}
+
+userSchema.methods.addBlog = async function (name, email, categories, title, description) {
+    try {
+        this.blog = await this.blog.concat({ name, email, categories, title, description });
+        await this.save().then(data => {
+            console.log(resolve(`[ok] blog saved`));
+        }).catch(err => {
+            console.log(reject(`[!ok] blog save failed ${err}`));
+        })
+    } catch (error) {
+        console.log(reject(`[!ok] addBlog failed`));
+    }
+    return this.blog;
 }
 
 const User = model('User', userSchema);

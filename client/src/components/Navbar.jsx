@@ -21,14 +21,19 @@ export default function Navbar() {
             setIsLoggedIn(true);
         }
     }
-
     useEffect(() => {
         callUser();
     })
     return (
         <nav>
             <div className="container navbar">
-                <NavLink to="/"><img className="nav__logo" draggable='false' src="favicon.png" alt="" /></NavLink>
+                <NavLink to="/">
+                    <img
+                        className="nav__logo"
+                        draggable='false'
+                        src="favicon.png"
+                        alt="logonavlogo" />
+                </NavLink>
                 <div className="nav_btns">
                     <NavLink to="/">Home</NavLink>
                     <button onClick={categories}>Categories</button>

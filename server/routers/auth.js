@@ -81,4 +81,25 @@ router.get('/logout', (req, res) => {
     res.status(200).json({ message: "Logged Out Successfully." });
 })
 
+router.post('/create', authorize, async (req, res) => {
+    const { name, email, categories, title, description } = await req.body;
+    if (name !== "" || email !== "" || categories !== "" || title !== "" || description !== "") {
+        const ID = req.userID;
+        const user = await User.findOne({ _id: ID });
+        if (user) {
+            const userBlog = await user.addBlog(name, email, categories, title, description);
+            await user.save().then(data => {
+                console.log(resolve(`[ok] blog saved - 92`));
+                res.status(200).json({ message: "Posted" });
+            }).catch(err => {
+                console.log(reject(`[!ok] blog failed 92 ${err}`));
+            })
+        } else {
+            res.status(404).json({ message: "Invalid Fields!" });
+        }
+    } else {
+        res.status(422).json({ message: "Please fill the form properly." })
+    }
+})
+
 module.exports = router;
