@@ -93,6 +93,7 @@ router.post('/create', authorize, async (req, res) => {
                 res.status(200).json({ message: "Posted" });
             }).catch(err => {
                 console.log(reject(`[!ok] blog failed 92 ${err}`));
+                res.status(400).json({ message: "Fill properly. [96]" });
             })
         } else {
             res.status(404).json({ message: "Invalid Fields!" });
@@ -100,6 +101,14 @@ router.post('/create', authorize, async (req, res) => {
     } else {
         res.status(422).json({ message: "Please fill the form properly." })
     }
+})
+
+router.get('/getall', (req, res) => {
+    User.find({}).then(data => {
+        res.status(200).json(data);
+    }).catch(err => {
+        res.status(400).json(err)
+    })
 })
 
 module.exports = router;

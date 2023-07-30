@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Create() {
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         name: "",
         email: ""
@@ -54,6 +56,7 @@ export default function Create() {
             setUser(data);
         } else {
             console.log('create error on get request');
+            navigate('/login');
         }
     }
 
@@ -77,6 +80,8 @@ export default function Create() {
         const data = await resp.json();
         if (resp.status === 200) {
             successToast(data.message);
+            setCat("");
+            setBlog({ title: "", description: "" });
         } else {
             errorToast(`${data.message}`);
         }
