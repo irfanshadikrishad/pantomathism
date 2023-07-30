@@ -24,7 +24,7 @@ export default function Navbar() {
 
     useEffect(() => {
         callUser();
-    }, [])
+    })
     return (
         <nav>
             <div className="container navbar">
