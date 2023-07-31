@@ -126,14 +126,13 @@ router.get('/blogs/:blogTitle', (req, res) => {
                     console.log(desiredTitle == blogOriginal);
                     return;
                 }
-                // else {
-                //     res.status(404).json({ message: "Not Found" });
-                // }
             })
         })
+        res.status(404).json({ message: "Not Found" });
     }).catch(err => {
         console.log(reject(`[!ok] blogs 131 ${err}`));
     })
+
 })
 
 module.exports = router;
