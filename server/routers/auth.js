@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const router = express.Router();
 const User = require('../models/user');
 const authorize = require('../middleware/authorize');
+const _ = require('lodash');
 
 const SALT = Number(process.env.SALT);
 const resolve = chalk.hex('#ACFADF');
@@ -108,6 +109,30 @@ router.get('/getall', (req, res) => {
         res.status(200).json(data);
     }).catch(err => {
         res.status(400).json(err)
+    })
+})
+
+router.get('/blogs/:blogTitle', (req, res) => {
+    console.log(resolve(`[ok] params : ${req.params.blogTitle}`));
+    const desiredTitle = _.lowerCase(req.params.blogTitle);
+    User.find({}).then(data => {
+        data.map((e) => {
+            const bloog = e.blog;
+            bloog.map((blo) => {
+                const blogOriginal = _.lowerCase(blo.title);
+                if (desiredTitle == blogOriginal) {
+                    res.status(200).json(bloog);
+                    console.log(resolve(`[ok] ${desiredTitle} ${blogOriginal}`));
+                    console.log(desiredTitle == blogOriginal);
+                    return;
+                }
+                // else {
+                //     res.status(404).json({ message: "Not Found" });
+                // }
+            })
+        })
+    }).catch(err => {
+        console.log(reject(`[!ok] blogs 131 ${err}`));
     })
 })
 

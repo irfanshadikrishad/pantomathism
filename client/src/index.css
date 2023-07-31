@@ -325,7 +325,7 @@ form.login__right {
 }
 
 .create__content>textarea {
-    height: 100px;
+    height: 500px;
 }
 
 form.create__form {
@@ -354,4 +354,9 @@ form.create__form {
 p.card_details {
     text-align: justify;
     font-weight: 600;
+}
+
+.blog__info {
+    display: flex;
+    gap: 15px;
 }

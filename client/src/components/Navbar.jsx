@@ -31,7 +31,7 @@ export default function Navbar() {
                     <img
                         className="nav__logo"
                         draggable='false'
-                        src="favicon.png"
+                        src="/favicon.png"
                         alt="logonavlogo" />
                 </NavLink>
                 <div className="nav_btns">

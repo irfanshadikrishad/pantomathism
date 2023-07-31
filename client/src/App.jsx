@@ -13,6 +13,8 @@ import Technology from "./components/Technology";
 import Profile from "./components/Profile";
 import Logout from "./components/Logout";
 import Create from "./components/Create";
+import E404 from "./components/E404";
+import Blog from "./components/Blog";
 
 export default function App() {
     return (
@@ -31,6 +33,8 @@ export default function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/create" element={<Create />} />
+                <Route path="/blogs/:blogTitle" element={<Blog />} />
+                <Route path="*" element={<E404 />} />
             </Routes>
         </>
     )
