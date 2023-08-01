@@ -432,3 +432,38 @@ form.panel__form {
     align-items: center;
     justify-content: center;
 }
+
+.admin__user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+
+p.admin__tag {
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 5px 8px;
+    border-radius: 8px;
+    font-style: italic;
+    text-transform: lowercase;
+}
+
+.admin__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.admin__logout {
+    border: 3px solid var(--primary);
+    font-size: 1rem;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: 600;
+}

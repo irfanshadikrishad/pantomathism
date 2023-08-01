@@ -5,6 +5,7 @@ const router = express.Router();
 const User = require('../models/user');
 const Admin = require('../models/admin');
 const authorize = require('../middleware/authorize');
+const admin = require('../middleware/admin');
 const _ = require('lodash');
 
 const SALT = Number(process.env.SALT);
@@ -244,6 +245,10 @@ router.post('/admin', (req, res) => {
             }
         })
     }
+})
+
+router.get('/panel/admin', admin, (req, res) => {
+    res.status(200).json(req.rootUser);
 })
 
 module.exports = router;
