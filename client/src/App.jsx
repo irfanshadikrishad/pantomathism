@@ -15,6 +15,8 @@ import Logout from "./components/Logout";
 import Create from "./components/Create";
 import E404 from "./components/E404";
 import Blog from "./components/Blog";
+import Panel from "./components/Panel";
+import Admin from "./components/Admin";
 
 export default function App() {
     return (
@@ -34,6 +36,8 @@ export default function App() {
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/blogs/:blogTitle" element={<Blog />} />
+                <Route path="/panel" element={<Panel />} />
+                <Route path="/panel/admin" element={<Admin />} />
                 <Route path="*" element={<E404 />} />
             </Routes>
         </>

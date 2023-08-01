@@ -3,6 +3,7 @@ const { hash, compare } = require('bcrypt');
 const chalk = require('chalk');
 const router = express.Router();
 const User = require('../models/user');
+const Admin = require('../models/admin');
 const authorize = require('../middleware/authorize');
 const _ = require('lodash');
 
@@ -105,7 +106,8 @@ router.post('/create', authorize, async (req, res) => {
 })
 
 router.get('/getall', (req, res) => {
-    User.find({}).then(data => {
+    User.find({}).sort({ updatedAt: -1, "blog.date": -1 }).then(data => {
+        console.log(data);
         res.status(200).json(data);
     }).catch(err => {
         res.status(400).json(err)
@@ -158,7 +160,7 @@ router.get('/history', (req, res) => {
 })
 
 router.get('/religion', (req, res) => {
-    User.find({ "blog.categories": "religion" }).then(data => {
+    User.find({ "blog.categories": "religion" }).sort({ "blog.date": -1 }).then(data => {
         if (data) {
             res.status(200).json(data);
         } else {
@@ -170,7 +172,7 @@ router.get('/religion', (req, res) => {
 })
 
 router.get('/technology', (req, res) => {
-    User.find({ "blog.categories": "technology" }).then(data => {
+    User.find({ "blog.categories": "technology" }).sort({ "blog.date": -1 }).then(data => {
         if (data) {
             res.status(200).json(data);
         } else {
@@ -179,6 +181,69 @@ router.get('/technology', (req, res) => {
     }).catch(error => {
         console.log(reject(`[!ok] technology : ${error}`));
     })
+})
+
+router.post('/panel', async (req, res) => {
+    const { email, password } = await req.body;
+    if (email === "" || password === "") {
+        res.status(400).json({ message: "Can't be empty" });
+    } else {
+        Admin.findOne({ email: email }).then(user => {
+            if (user) {
+                compare(password, user.password, function (error, result) {
+                    if (error) {
+                        console.log(reject(`[!ok] decrypt error 195 : ${error}`));
+                        res.status(422).json({ message: "Decrypt Error" });
+                    } else {
+                        if (email === user.email && result) {
+                            user.genJWT().then(token => {
+                                console.log(resolve(`[ok] JWT : ${token}`));
+                                res.status(200).cookie(
+                                    "JWT", token, {
+                                    expires: new Date(Date.now() + 25892000000),
+                                    httpOnly: true
+                                }).json({ message: "Logged In" });
+                            }).catch(err => {
+                                console.log(reject(`[!ok] JWT Failed`));
+                            })
+                        } else {
+                            res.status(400).json({ message: "Invalid Credentials! 210" })
+                        }
+                    }
+                })
+            } else {
+                res.status(404).json({ message: "Invalid Credentials 215" });
+            }
+        }).catch(error => {
+            res.status(404).json({ message: "Finding Error" })
+        })
+    }
+})
+
+router.post('/admin', (req, res) => {
+    const { name, email, password } = req.body;
+    if (name === "" || email === "" || password === "") {
+        res.status(400).json({ message: "Can't be empty." })
+    } else {
+        Admin.findOne({ email: email }).then(data => {
+            if (data) {
+                res.status(400).json({ message: "User Already Exists" })
+            } else {
+                hash(password, SALT, function (error, hash) {
+                    const admin = new Admin({
+                        name: name,
+                        email: email,
+                        password: hash
+                    })
+                    admin.save().then(sav => {
+                        res.status(201).json({ message: "Register Success" });
+                    }).catch(error => {
+                        res.status(400).json({ message: "Can't Register" });
+                    })
+                })
+            }
+        })
+    }
 })
 
 module.exports = router;

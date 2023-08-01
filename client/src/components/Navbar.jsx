@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
     const [isCategories, setIsCategories] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    function categories() {
-        setIsCategories(!isCategories);
-    }
+    // function categories() {
+    //     setIsCategories(!isCategories);
+    // }
     const callUser = async () => {
         const res = await fetch('http://localhost:3001/data', {
             method: "GET",
@@ -28,16 +28,23 @@ export default function Navbar() {
         <nav>
             <div className="container navbar">
                 <NavLink to="/">
-                    <img
+                    <h1 className="nav__logo__text">𝙋𝙖𝙣𝙩𝙤𝙢𝙖𝙩𝙝𝙞𝙨𝙢</h1>
+                    {/* <img
                         className="nav__logo"
                         draggable='false'
                         src="/favicon.png"
-                        alt="logonavlogo" />
+                        alt="logonavlogo" /> */}
                 </NavLink>
                 <div className="nav_btns">
                     <NavLink to="/">Home</NavLink>
-                    <button onClick={categories}>Categories</button>
-                    {isCategories ? <div className="nav_categories">
+                    <button
+                        onMouseEnter={() => {
+                            setIsCategories(true)
+                        }}
+                    >Categories</button>
+                    {isCategories ? <div onMouseLeave={() => {
+                        setIsCategories(false)
+                    }} className="nav_categories">
                         <NavLink to="/politics">Politics</NavLink>
                         <NavLink to="/history">History</NavLink>
                         <NavLink to="/religion">Religion</NavLink>
@@ -49,6 +56,6 @@ export default function Navbar() {
 
                 </div>
             </div>
-        </nav>
+        </nav >
     )
 }

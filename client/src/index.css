@@ -73,6 +73,7 @@ a.active {
     flex-direction: column;
     top: 80px;
     background-color: white;
+    z-index: 10;
     /* padding: 20px 50px; */
 }
 
@@ -349,6 +350,7 @@ form.create__form {
 p.card_details {
     text-align: justify;
     font-weight: 600;
+    opacity: 80%;
 }
 
 .blog__info {
@@ -389,4 +391,44 @@ h1.blog__title {
     padding: 15px 50px;
     background-color: white;
     border-radius: 2px;
+}
+
+.navbar>a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+form.panel__form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    border-radius: 2px;
+    gap: 8px;
+}
+
+.panel__form>input {
+    padding: 10px 10px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    background-color: var(--background);
+}
+
+.panel__form>button {
+    padding: 10px;
+    border: none;
+    background-color: var(--primary);
+    font-size: 1rem;
+    color: var(--background);
+    font-weight: 600;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.panel__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
