@@ -133,4 +133,26 @@ router.get('/blogs/:blogTitle', (req, res) => {
 
 })
 
+router.get('/politics', (req, res) => {
+    var pol = {};
+    User.find({ "blog.categories": "politics" }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+            // data.map(blogs => {
+            //     const blooogs = blogs.blog;
+            //     blooogs.map(blo => {
+            //         if (blo.categories === "politics") {
+            //             pol = { ...pol, blo }
+            //         }
+            //     })
+            // })
+            // res.status(200).json(pol);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] politics : ${error}`));
+    })
+})
+
 module.exports = router;

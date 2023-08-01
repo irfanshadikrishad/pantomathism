@@ -116,26 +116,25 @@ a.active {
     color: var(--primary);
 }
 
-p.tags {
-    color: var(--primary);
-    font-weight: 700;
-    font-style: italic;
-}
-
 .home__card>a {
     text-decoration: none;
 }
 
 .card__bottom {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    margin-top: 10px;
 }
 
-.card__date {
-    font-style: italic;
-    font-weight: 600;
-    opacity: 70%;
+.card__bottom>a,
+.card__bottom>p {
+    padding: 5px 10px;
+    background-color: var(--primary);
+    color: var(--background);
+    border-radius: 2px;
 }
 
 .about {
@@ -344,12 +343,6 @@ form.create__form {
     cursor: pointer;
 }
 
-.author {
-    font-size: 1rem;
-    font-weight: 700;
-    font-style: italic;
-    color: var(--primary);
-}
 
 p.card_details {
     text-align: justify;
@@ -359,4 +352,27 @@ p.card_details {
 .blog__info {
     display: flex;
     gap: 15px;
+}
+
+.blog__info>p {
+    font-size: 1rem;
+    padding: 5px 15px;
+    background-color: var(--primary);
+    color: var(--background);
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+p.blog__details {
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 80%;
+    text-align: justify;
+}
+
+h1.blog__title {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-style: italic;
+    margin-bottom: 5px;
 }

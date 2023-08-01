@@ -33,8 +33,8 @@ export default function Blog() {
     return (
         <>
             <div className="container page">
-                <h1>{blog.title}</h1>
-                <p>{blog.description}</p>
+                <h1 className="blog__title">{blog.title}</h1>
+                <p className="blog__details">{blog.description}</p>
                 <div className="blog__info">
                     <p>{blog.name}</p>
                     <p>{blog.categories}</p>
