@@ -121,9 +121,7 @@ router.get('/blogs/:blogTitle', (req, res) => {
             bloog.map((blo) => {
                 const blogOriginal = _.lowerCase(blo.title);
                 if (desiredTitle == blogOriginal) {
-                    res.status(200).json(bloog);
-                    console.log(resolve(`[ok] ${desiredTitle} ${blogOriginal}`));
-                    console.log(desiredTitle == blogOriginal);
+                    res.status(200).json(blo);
                     return;
                 }
             })

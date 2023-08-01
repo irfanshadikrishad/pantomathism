@@ -22,7 +22,7 @@ export default function Blog() {
         });
         const data = await response.json();
         if (response.status === 200) {
-            setBlog(data[0]);
+            setBlog(data);
         } else {
             navigate('/error');
         }
