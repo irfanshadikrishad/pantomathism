@@ -134,24 +134,50 @@ router.get('/blogs/:blogTitle', (req, res) => {
 })
 
 router.get('/politics', (req, res) => {
-    var pol = {};
     User.find({ "blog.categories": "politics" }).then(data => {
         if (data) {
             res.status(200).json(data);
-            // data.map(blogs => {
-            //     const blooogs = blogs.blog;
-            //     blooogs.map(blo => {
-            //         if (blo.categories === "politics") {
-            //             pol = { ...pol, blo }
-            //         }
-            //     })
-            // })
-            // res.status(200).json(pol);
         } else {
             res.status(404).json({ message: "No blogs available" });
         }
     }).catch(error => {
         console.log(reject(`[!ok] politics : ${error}`));
+    })
+})
+
+router.get('/history', (req, res) => {
+    User.find({ "blog.categories": "history" }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] history : ${error}`));
+    })
+})
+
+router.get('/religion', (req, res) => {
+    User.find({ "blog.categories": "religion" }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] religion : ${error}`));
+    })
+})
+
+router.get('/technology', (req, res) => {
+    User.find({ "blog.categories": "technology" }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] technology : ${error}`));
     })
 })
 

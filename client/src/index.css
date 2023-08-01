@@ -95,7 +95,7 @@ a.active {
 
 .card__main {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
@@ -122,7 +122,7 @@ a.active {
 
 .card__bottom {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 5px;
     align-items: center;
     justify-content: center;
@@ -135,16 +135,18 @@ a.active {
     background-color: var(--primary);
     color: var(--background);
     border-radius: 2px;
+    text-align: center;
 }
 
 .about {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
     gap: 25px;
 }
 
 .about__right>img {
-    width: 400px;
+    width: 250px;
 }
 
 .about__left>p {
@@ -375,4 +377,16 @@ h1.blog__title {
     color: var(--primary);
     font-style: italic;
     margin-bottom: 5px;
+}
+
+.one {
+    display: flex;
+    gap: 30px;
+}
+
+.profile__table>tr>td {
+    width: 10px;
+    padding: 15px 50px;
+    background-color: white;
+    border-radius: 2px;
 }

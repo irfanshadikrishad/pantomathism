@@ -32,9 +32,20 @@ export default function Profile() {
         <div className="container page">
             <h1 className="the__title">Profile</h1>
             <div className="content">
-                <p><span>ID:</span>{user._id}</p>
-                <p><span>Name:</span>{user.name}</p>
-                <p><span>Email:</span>{user.email}</p>
+                <table className="profile__table">
+                    <tr>
+                        <td>ID:</td>
+                        <td>{user._id}</td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td>{user.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>{user.email}</td>
+                    </tr>
+                </table>
             </div>
             <div className="logout__btns">
                 <NavLink to="/create" className="logout">Post a blog</NavLink>

@@ -1,16 +1,39 @@
+import { useEffect, useState } from "react";
 import Card from "./Card";
 
-export default function Religion() {
+export default function History() {
+    const [blog, setBlog] = useState([]);
+    const callPolitics = async () => {
+        const response = await fetch('http://localhost:3001/religion', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        const data = await response.json();
+        setBlog(data);
+    }
+    useEffect(() => {
+        callPolitics();
+    }, [blog]);
     return (
-        <div className="container page">
+        <section className="container page">
             <div className="card__main">
-                <Card
-                    date="26 July, 2023"
-                    tag="technology"
-                    details="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum impedit explicabo aut delectus, commodi neque."
-                    title="Lorem ipsum dolor sit amet."
-                    src="https://placehold.co/800x350" />
+                {blog.map(b => {
+                    return b.blog.map((blo, index) => {
+                        if (blo.categories === "religion") {
+                            return <Card
+                                key={blo._id}
+                                title={blo.title}
+                                details={blo.description.slice(0, 100)}
+                                tag={blo.categories}
+                                author={blo.name}
+                                date={blo.date.slice(0, 10)}
+                            />
+                        }
+                    })
+                })}
             </div>
-        </div>
+        </section>
     )
 }
