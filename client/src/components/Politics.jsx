@@ -25,10 +25,10 @@ export default function Politics() {
                             return <Card
                                 key={blo._id}
                                 title={blo.title}
-                                details={blo.description.slice(0, 100)}
+                                details={blo.description.slice(0, 250)}
                                 tag={blo.categories}
                                 author={blo.name}
-                                date={blo.date.slice(0, 10)}
+                                date={blo.date.slice(2, 10)}
                             />
                         }
                     })

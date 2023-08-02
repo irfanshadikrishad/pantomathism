@@ -107,7 +107,7 @@ router.post('/create', authorize, async (req, res) => {
 })
 
 router.get('/getall', (req, res) => {
-    User.find({}).sort({ updatedAt: -1, "blog.date": -1 }).then(data => {
+    User.find({}).sort({ "blog.createdAt": -1 }).then(data => {
         console.log(data);
         res.status(200).json(data);
     }).catch(err => {
@@ -249,6 +249,16 @@ router.post('/admin', (req, res) => {
 
 router.get('/panel/admin', admin, (req, res) => {
     res.status(200).json(req.rootUser);
+})
+
+router.delete('/user/delete', admin, async (req, res) => {
+    const { id } = await req.body;
+    console.log(resolve(`[ok] delete  ${id}`));
+    User.deleteOne({ _id: id }).then(data => {
+        res.status(200).json({ message: "Deleted Successfully" })
+    }).catch(error => {
+        res.status(404).json({ message: error })
+    })
 })
 
 module.exports = router;

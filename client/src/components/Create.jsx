@@ -82,6 +82,7 @@ export default function Create() {
             successToast(data.message);
             setCat("");
             setBlog({ title: "", description: "" });
+            navigate('/');
         } else {
             errorToast(`${data.message}`);
         }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, NavLink } from "react-router-dom";
 
 export default function Blog() {
     const { blogTitle } = useParams();
@@ -37,7 +37,7 @@ export default function Blog() {
                 <p className="blog__details">{blog.description}</p>
                 <div className="blog__info">
                     <p>{blog.name}</p>
-                    <p>{blog.categories}</p>
+                    <NavLink to={`/${blog.categories}`}>{blog.categories}</NavLink>
                     <p>{blog.date.slice(0, 10)}</p>
                 </div>
             </div>

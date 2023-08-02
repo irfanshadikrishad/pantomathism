@@ -106,9 +106,16 @@ a.active {
 }
 
 .home__card {
+    display: grid;
+    align-items: end;
     padding: 21px;
     border-radius: 10px;
     background-color: white;
+}
+
+.card__top>a {
+    text-decoration: none;
+    color: var(--primary);
 }
 
 .card__h1 {
@@ -137,13 +144,19 @@ a.active {
     color: var(--background);
     border-radius: 2px;
     text-align: center;
+    text-decoration: none;
 }
 
 .about {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
-    gap: 25px;
+    justify-content: center;
+    /* gap: 25px; */
+}
+
+.about__left {
+    text-align: justify;
 }
 
 .about__right>img {
@@ -167,6 +180,7 @@ a.active {
     border-radius: 10px;
     background-color: white;
     gap: 100px;
+    margin-top: 50px;
 }
 
 .register__left {
@@ -204,7 +218,14 @@ a.active {
 }
 
 .register__right>img {
-    width: 250px;
+    width: 333px;
+    position: absolute;
+}
+
+.register__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .the__title {
@@ -220,7 +241,8 @@ a.active {
 }
 
 .login__left>img {
-    width: 250px;
+    width: 300px;
+    position: absolute;
 }
 
 .login__main {
@@ -230,6 +252,7 @@ a.active {
     padding: 25px;
     background-color: white;
     border-radius: 10px;
+    margin-top: 50px;
 }
 
 form.login__right {
@@ -358,13 +381,15 @@ p.card_details {
     gap: 15px;
 }
 
-.blog__info>p {
+.blog__info>p,
+.blog__info>a {
     font-size: 1rem;
     padding: 5px 15px;
     background-color: var(--primary);
     color: var(--background);
     margin-top: 10px;
     border-radius: 2px;
+    text-decoration: none;
 }
 
 p.blog__details {
@@ -372,6 +397,7 @@ p.blog__details {
     font-weight: 600;
     opacity: 80%;
     text-align: justify;
+    white-space: pre-wrap;
 }
 
 h1.blog__title {
@@ -466,4 +492,56 @@ p.admin__tag {
     text-decoration: none;
     font-style: italic;
     font-weight: 600;
+}
+
+.users {
+    padding-top: 5rem;
+}
+
+.primary {
+    color: var(--primary);
+}
+
+.card {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    border: 3px solid var(--primary);
+    border-radius: 5px;
+}
+
+.user_cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+button.user__delete {
+    border: none;
+    background-color: transparent;
+    color: salmon;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.card>div>h3 {
+    color: var(--primary);
+    font-style: italic;
+}
+
+.culur {
+    color: var(--color);
+}
+
+p.author,
+.tags,
+.card__date {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
 }

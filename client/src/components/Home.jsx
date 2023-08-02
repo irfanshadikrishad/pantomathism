@@ -27,7 +27,7 @@ export default function Home() {
                             author={i.name}
                             details={i.description.slice(0, 250)}
                             tag={i.categories}
-                            date={i.date.slice(0, 10)}
+                            date={i.date.slice(2, 10)}
                         />
                     })
                 })}
