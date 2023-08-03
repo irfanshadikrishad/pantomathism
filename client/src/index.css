@@ -51,7 +51,7 @@ nav {
 
 a.active {
     color: var(--primary);
-    font-weight: 600;
+    font-weight: normal;
 }
 
 .navbar {
@@ -71,7 +71,7 @@ a.active {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 80px;
+    top: 73px;
     background-color: white;
     z-index: 10;
     /* padding: 20px 50px; */

@@ -11,25 +11,26 @@ export default function Blog() {
         categories: "",
         date: ""
     });
-    const callBlog = async () => {
-        const response = await fetch(`http://localhost:3001/blogs/${blogTitle}`, {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        });
-        const data = await response.json();
-        if (response.status === 200) {
-            setBlog(data);
-        } else {
-            navigate('/error');
-        }
-    }
+
     useEffect(() => {
+        const callBlog = async () => {
+            const response = await fetch(`http://localhost:3001/blogs/${blogTitle}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                credentials: "include"
+            });
+            const data = await response.json();
+            if (response.status === 200) {
+                setBlog(data);
+            } else {
+                navigate('/error');
+            }
+        }
         callBlog();
-    }, [])
+    }, [blog, blogTitle, navigate])
     return (
         <>
             <div className="container page">

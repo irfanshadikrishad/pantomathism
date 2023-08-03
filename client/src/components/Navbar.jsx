@@ -1,39 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { LoginContext } from "../App";
 
 export default function Navbar() {
+    const { state, dispatch } = useContext(LoginContext);
     const [isCategories, setIsCategories] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    // function categories() {
-    //     setIsCategories(!isCategories);
-    // }
-    const callUser = async () => {
-        const res = await fetch('http://localhost:3001/data', {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        })
-        const data = await res.json();
-        if (res.status === 200 && data._id) {
-            setIsLoggedIn(true);
-        }
-    }
+
     useEffect(() => {
+        const callUser = async () => {
+            const res = await fetch('http://localhost:3001/data', {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                credentials: "include"
+            })
+            const data = await res.json();
+            if (res.status === 200 && data._id) {
+                dispatch({ type: "LOGIN", payload: true });
+            } else {
+                dispatch({ type: "LOGIN", payload: false });
+            }
+        }
         callUser();
-    })
+    }, [state, isCategories, dispatch])
     return (
         <nav>
             <div className="container navbar">
                 <NavLink to="/">
                     <h1 className="nav__logo__text">𝙋𝙖𝙣𝙩𝙤𝙢𝙖𝙩𝙝𝙞𝙨𝙢</h1>
-                    {/* <img
-                        className="nav__logo"
-                        draggable='false'
-                        src="/favicon.png"
-                        alt="logonavlogo" /> */}
                 </NavLink>
                 <div className="nav_btns">
                     <NavLink to="/">Home</NavLink>
@@ -51,7 +47,7 @@ export default function Navbar() {
                         <NavLink to="/technology">Technology</NavLink>
                     </div> : ""}
                     <NavLink to="/about">About</NavLink>
-                    {isLoggedIn ? <NavLink to="/profile">Profile</NavLink> : <><NavLink to="/login">Login</NavLink>
+                    {state ? <NavLink to="/profile">Profile</NavLink> : <><NavLink to="/login">Login</NavLink>
                         <NavLink className="nav__register" to="/register">Register</NavLink></>}
 
                 </div>

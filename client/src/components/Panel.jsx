@@ -13,18 +13,6 @@ export default function Panel() {
         const { name, value } = e.target;
         setAdmin({ ...admin, [name]: value });
     }
-    function successToast(tweet) {
-        toast.success(`${tweet}`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
-    }
     function errorToast(error) {
         toast.error(`${error}`, {
             position: "top-right",

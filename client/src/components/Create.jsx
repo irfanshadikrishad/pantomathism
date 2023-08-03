@@ -42,23 +42,6 @@ export default function Create() {
             theme: "light",
         });
     }
-    const callData = async () => {
-        const response = await fetch('http://localhost:3001/data', {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        })
-        const data = await response.json();
-        if (response.status === 200) {
-            setUser(data);
-        } else {
-            console.log('create error on get request');
-            navigate('/login');
-        }
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -89,8 +72,25 @@ export default function Create() {
     }
 
     useEffect(() => {
+        const callData = async () => {
+            const response = await fetch('http://localhost:3001/data', {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                credentials: "include"
+            })
+            const data = await response.json();
+            if (response.status === 200) {
+                setUser(data);
+            } else {
+                console.log('create error on get request');
+                navigate('/login');
+            }
+        }
         callData();
-    }, []);
+    }, [navigate, user, cat, blog]);
     return (
         <>
             <div className="container page">

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { LoginContext } from "../App";
 
 export default function Login() {
+    const { dispatch } = useContext(LoginContext);
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -37,7 +39,7 @@ export default function Login() {
             })
             const data = await response.json();
             if (response.status === 200) {
-                
+                dispatch({ type: "LOGIN", payload: true });
                 navigate('/');
             } else {
                 errorToast(`${data.message}`);
