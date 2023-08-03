@@ -7,7 +7,7 @@ export default function AdminCard(props) {
     function successToast(tweet) {
         toast.success(`${tweet}`, {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -19,7 +19,7 @@ export default function AdminCard(props) {
     function errorToast(error) {
         toast.error(`${error}`, {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -44,6 +44,7 @@ export default function AdminCard(props) {
         const data = await response.json();
         if (response.status === 200) {
             successToast(data.message);
+            props.setLoader(prev => !prev);
         } else {
             errorToast(data.message);
         }

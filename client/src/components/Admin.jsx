@@ -6,6 +6,7 @@ export default function Admin() {
     const navigate = useNavigate();
     const [admin, setAdmin] = useState({});
     const [users, setUsers] = useState([]);
+    const [loader, setLoader] = useState(false);
 
     useEffect(() => {
         const callAdmin = async () => {
@@ -39,7 +40,7 @@ export default function Admin() {
         }
         callAdmin();
         getAll();
-    }, [navigate])
+    }, [navigate, loader])
     return (
         <div className="container page">
             <div className="admin__header">
@@ -60,6 +61,7 @@ export default function Admin() {
                             name={user.name}
                             id={user._id}
                             blog={user.blog.length}
+                            setLoader={setLoader}
                         />
                     })}
                 </div>
