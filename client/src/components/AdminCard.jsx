@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 
 export default function AdminCard(props) {
-    const navigate = useNavigate();
     function successToast(tweet) {
         toast.success(`${tweet}`, {
             position: "top-right",
@@ -46,7 +44,6 @@ export default function AdminCard(props) {
         const data = await response.json();
         if (response.status === 200) {
             successToast(data.message);
-            navigate('/panel/admin');
         } else {
             errorToast(data.message);
         }

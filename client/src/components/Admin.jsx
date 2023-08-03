@@ -6,39 +6,40 @@ export default function Admin() {
     const navigate = useNavigate();
     const [admin, setAdmin] = useState({});
     const [users, setUsers] = useState([]);
-    const callAdmin = async () => {
-        const response = await fetch('http://localhost:3001/panel/admin', {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        })
-        const data = await response.json();
-        setAdmin(data);
-        if (response.status === 200) {
 
-        } else {
-            navigate('/panel');
-        }
-    }
-    const getAll = async () => {
-        const response = await fetch('http://localhost:3001/getall', {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        })
-        const data = await response.json();
-        setUsers(data);
-    }
     useEffect(() => {
+        const callAdmin = async () => {
+            const resp = await fetch('http://localhost:3001/panel/admin', {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                credentials: "include"
+            })
+            const data = await resp.json();
+            setAdmin(data);
+            if (resp.status === 200) {
+
+            } else {
+                navigate('/panel');
+            }
+        }
+        const getAll = async () => {
+            const response = await fetch('http://localhost:3001/getall', {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                credentials: "include"
+            })
+            const data = await response.json();
+            setUsers(data);
+        }
         callAdmin();
         getAll();
-    }, [])
+    }, [navigate])
     return (
         <div className="container page">
             <div className="admin__header">

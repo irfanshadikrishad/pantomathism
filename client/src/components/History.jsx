@@ -21,16 +21,15 @@ export default function History() {
             <div className="card__main">
                 {blog.map(b => {
                     return b.blog.map((blo, index) => {
-                        if (blo.categories === "history") {
-                            return <Card
+                        return blo.categories === "history" ?
+                            <Card
                                 key={blo._id}
                                 title={blo.title}
                                 details={blo.description.slice(0, 250)}
                                 tag={blo.categories}
                                 author={blo.name}
                                 date={blo.date.slice(2, 10)}
-                            />
-                        }
+                            /> : null;
                     })
                 })}
             </div>
