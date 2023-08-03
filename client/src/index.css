@@ -544,3 +544,48 @@ p.author,
     gap: 5px;
     justify-content: center;
 }
+
+.social__card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.social__card>p {
+    font-style: italic;
+    font-weight: 500;
+}
+
+.social__cards>a {
+    text-decoration: none;
+    color: var(--color);
+}
+
+.social__cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.contact__dev {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 3px;
+}
+
+.developer__about {
+    font-size: 1.1rem;
+    opacity: 95%;
+    padding: 10px 0;
+}
+
+.intro {
+    font-size: 2rem;
+}
+
+.contact {
+    padding: 10vw 0;
+}

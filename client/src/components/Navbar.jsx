@@ -47,6 +47,7 @@ export default function Navbar() {
                         <NavLink to="/technology">Technology</NavLink>
                     </div> : ""}
                     <NavLink to="/about">About</NavLink>
+                    <NavLink to="/contact">Contact</NavLink>
                     {state ? <NavLink to="/profile">Profile</NavLink> : <><NavLink to="/login">Login</NavLink>
                         <NavLink className="nav__register" to="/register">Register</NavLink></>}
 
