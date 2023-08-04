@@ -27,7 +27,7 @@ export default function Panel() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3001/panel', {
+        const response = await fetch('https://pantomathism.onrender.com/panel', {
             method: "POST",
             headers: {
                 Accept: "application/json",

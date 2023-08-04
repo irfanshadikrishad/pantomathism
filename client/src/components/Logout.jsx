@@ -20,7 +20,7 @@ export default function Logout() {
         });
     }
     const callLogout = async () => {
-        fetch('http://localhost:3001/logout', {
+        fetch('https://pantomathism.onrender.com/logout', {
             method: "GET",
             headers: {
                 Accept: "application/json",

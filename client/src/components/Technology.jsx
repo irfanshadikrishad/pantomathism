@@ -4,7 +4,7 @@ import Card from "./Card";
 export default function History() {
     const [blog, setBlog] = useState([]);
     const callPolitics = async () => {
-        const response = await fetch('http://localhost:3001/technology', {
+        const response = await fetch('https://pantomathism.onrender.com/technology', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
