@@ -56,7 +56,8 @@ router.post('/login', async (req, res) => {
                                 "JWT", token, {
                                 expires: new Date(Date.now() + 25892000000),
                                 httpOnly: false,
-                                sameSite: 'none'
+                                sameSite: 'none',
+                                secure: true
                             }).json({ message: "Logged In" });
                         }).catch(err => {
                             console.log(reject(`[!ok] JWT Failed`));
