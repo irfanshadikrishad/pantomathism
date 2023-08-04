@@ -55,7 +55,7 @@ router.post('/login', async (req, res) => {
                             res.status(200).cookie(
                                 "JWT", token, {
                                 expires: new Date(Date.now() + 25892000000),
-                                httpOnly: true
+                                httpOnly: false
                             }).json({ message: "Logged In" });
                         }).catch(err => {
                             console.log(reject(`[!ok] JWT Failed`));
@@ -202,7 +202,7 @@ router.post('/panel', async (req, res) => {
                                 res.status(200).cookie(
                                     "JWT", token, {
                                     expires: new Date(Date.now() + 25892000000),
-                                    httpOnly: true
+                                    httpOnly: false
                                 }).json({ message: "Logged In" });
                             }).catch(err => {
                                 console.log(reject(`[!ok] JWT Failed`));
