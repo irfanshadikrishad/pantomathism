@@ -20,7 +20,7 @@ connect(MONGO).then(() => {
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: "https://jade-licorice-c9f72d.netlify.app/*"
+    origin: "https://pantomathism.netlify.app"
 }))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
