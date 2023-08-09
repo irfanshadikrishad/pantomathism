@@ -33,7 +33,7 @@ export default function Card(props) {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3001/blog/delete', {
+        const response = await fetch('https://pantomathism.onrender.com/blog/delete', {
             method: "PATCH",
             headers: {
                 Accept: "application/json",

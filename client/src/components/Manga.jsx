@@ -5,7 +5,7 @@ export default function Manga() {
     const [manga, setManga] = useState([]);
 
     const callManga = async () => {
-        const response = await fetch('http://localhost:3001/manga', {
+        const response = await fetch('https://pantomathism.onrender.com/manga', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

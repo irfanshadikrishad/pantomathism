@@ -48,7 +48,7 @@ export default function Create() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const resp = await fetch('http://localhost:3001/create', {
+        const resp = await fetch('https://pantomathism.onrender.com/create', {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -76,7 +76,7 @@ export default function Create() {
 
     useEffect(() => {
         const callData = async () => {
-            const response = await fetch('http://localhost:3001/data', {
+            const response = await fetch('https://pantomathism.onrender.com/data', {
                 method: "GET",
                 headers: {
                     Accept: "application/json",

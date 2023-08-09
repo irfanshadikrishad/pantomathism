@@ -17,7 +17,7 @@ export default function Blog() {
 
     useEffect(() => {
         const callBlog = async () => {
-            const response = await fetch(`http://localhost:3001/blogs/${blogTitle}`, {
+            const response = await fetch(`https://pantomathism.onrender.com/blogs/${blogTitle}`, {
                 method: "GET",
                 headers: {
                     Accept: "application/json",

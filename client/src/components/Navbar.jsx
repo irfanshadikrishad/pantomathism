@@ -11,7 +11,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const callUser = async () => {
-            const res = await fetch('http://localhost:3001/data', {
+            const res = await fetch('https://pantomathism.onrender.com/data', {
                 method: "GET",
                 headers: {
                     Accept: "application/json",

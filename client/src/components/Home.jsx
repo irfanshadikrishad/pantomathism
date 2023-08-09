@@ -19,7 +19,7 @@ export default function Home() {
     const [tech, setTech] = useState([]);
     const [trend, setTrend] = useState([]);
     const callTrend = async () => {
-        const response = await fetch('http://localhost:3001/get3', {
+        const response = await fetch('https://pantomathism.onrender.com/get3', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -29,7 +29,7 @@ export default function Home() {
         await setTrend(data);
     }
     const callAnime = async () => {
-        const response = await fetch('http://localhost:3001/anime3', {
+        const response = await fetch('https://pantomathism.onrender.com/anime3', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -39,7 +39,7 @@ export default function Home() {
         await setAnime(data);
     }
     const callManga = async () => {
-        const response = await fetch('http://localhost:3001/manga3', {
+        const response = await fetch('https://pantomathism.onrender.com/manga3', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -49,7 +49,7 @@ export default function Home() {
         await setManga(data);
     }
     const callPolitics = async () => {
-        const response = await fetch('http://localhost:3001/politics3', {
+        const response = await fetch('https://pantomathism.onrender.com/politics3', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -59,7 +59,7 @@ export default function Home() {
         await setPolitics(data);
     }
     const callHistory = async () => {
-        const response = await fetch('http://localhost:3001/history3', {
+        const response = await fetch('https://pantomathism.onrender.com/history3', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -69,7 +69,7 @@ export default function Home() {
         await setHistory(data);
     }
     const callReligion = async () => {
-        const response = await fetch('http://localhost:3001/religion3', {
+        const response = await fetch('https://pantomathism.onrender.com/religion3', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -79,7 +79,7 @@ export default function Home() {
         await setReligion(data);
     }
     const callTech = async () => {
-        const response = await fetch('http://localhost:3001/technology3', {
+        const response = await fetch('https://pantomathism.onrender.com/technology3', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

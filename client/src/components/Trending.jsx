@@ -4,7 +4,7 @@ import Card from "./Card";
 export default function Trending() {
     const [blog, setBlog] = useState([]);
     const callTrending = async () => {
-        const response = await fetch('http://localhost:3001/getAll', {
+        const response = await fetch('https://pantomathism.onrender.com/getAll', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

@@ -11,7 +11,7 @@ export default function User() {
 
     useEffect(() => {
         const callUser = async () => {
-            const response = await fetch(`http://localhost:3001/user/${userId}`, {
+            const response = await fetch(`https://pantomathism.onrender.com/user/${userId}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"

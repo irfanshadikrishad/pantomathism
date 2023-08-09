@@ -5,7 +5,7 @@ export default function Anime() {
     const [anime, setAnime] = useState([]);
 
     const callAnime = async () => {
-        const response = await fetch('http://localhost:3001/anime', {
+        const response = await fetch('https://pantomathism.onrender.com/anime', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
