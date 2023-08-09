@@ -20,6 +20,26 @@ body {
     margin: 0 auto;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -347,7 +367,8 @@ form.login__right {
 
 .create__content>input,
 .create__content>textarea,
-.create__info>input {
+.create__info>input,
+#category {
     padding: 10px 10px;
     font-size: 1.2rem;
     border: none;
@@ -355,8 +376,19 @@ form.login__right {
     background-color: white;
 }
 
+#category {
+    cursor: pointer;
+}
+
+.create>h1 {
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
 .create__content>textarea {
     height: 350px;
+    padding: 10px;
 }
 
 form.create__form {
@@ -681,6 +713,10 @@ p.author,
 }
 
 @media screen and (max-width:850px) {
+    .create__info {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .card__main {
         grid-template-columns: 1fr;
     }
@@ -709,7 +745,31 @@ p.author,
     }
 }
 
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error>h1 {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+.error>img {
+    width: 250px;
+}
+
 @media screen and (max-width:768px) {
+    .create>h1 {
+        font-size: 1.5rem;
+    }
+
+    .create__info {
+        grid-template-columns: 1fr;
+    }
+
     .user_cards {
         grid-template-columns: 1fr;
     }

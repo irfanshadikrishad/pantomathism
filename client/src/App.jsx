@@ -17,6 +17,8 @@ import E404 from "./components/E404";
 import Blog from "./components/Blog";
 import Panel from "./components/Panel";
 import Admin from "./components/Admin";
+import Anime from "./components/Anime";
+import Manga from "./components/Manga";
 import { initialState, reducer } from "./reducer/UserReducer";
 
 export const LoginContext = createContext();
@@ -38,6 +40,8 @@ const Routing = () => {
         <Route path="/blogs/:blogTitle" element={<Blog />} />
         <Route path="/panel" element={<Panel />} />
         <Route path="/panel/admin" element={<Admin />} />
+        <Route path="/anime" element={<Anime />} />
+        <Route path="/manga" element={<Manga />} />
         <Route path="*" element={<E404 />} />
     </Routes>
 }

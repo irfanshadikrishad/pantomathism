@@ -18,6 +18,9 @@ export default function Create() {
         const { name, value } = e.target;
         setBlog({ ...blog, [name]: value });
     }
+    const handleCat = (e) => {
+        setCat(e.target.value);
+    }
     function successToast(tweet) {
         toast.success(`${tweet}`, {
             position: "top-right",
@@ -93,8 +96,8 @@ export default function Create() {
     }, [navigate, user, cat, blog]);
     return (
         <>
-            <div className="container page">
-                <h1>create a blog</h1>
+            <div className="container page create">
+                <h1>Fabricate thought's into words.</h1>
                 <form onSubmit={handleSubmit} method="post" className="create__form">
                     <div className="create__info">
                         <input
@@ -107,15 +110,15 @@ export default function Create() {
                             readOnly={true}
                             value={user.email}
                             type="email" />
-                        <input
-                            required="true"
-                            name="categories"
-                            onChange={(e) => {
-                                setCat(e.target.value)
-                            }}
-                            value={cat}
-                            type="text"
-                            placeholder="Category" />
+                        <select name="category" id="category" onChange={handleCat}>
+                            <option defaultValue="other">other</option>
+                            <option value="anime">Anime</option>
+                            <option value="history">History</option>
+                            <option value="manga">Manga</option>
+                            <option value="politics">Politics</option>
+                            <option value="religion">Religion</option>
+                            <option value="technology">Technology</option>
+                        </select>
                     </div>
                     <div className="create__content">
                         <input

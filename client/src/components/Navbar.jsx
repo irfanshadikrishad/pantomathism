@@ -45,8 +45,10 @@ export default function Navbar() {
                         {isCategories ? <div onMouseLeave={() => {
                             setIsCategories(false)
                         }} className="nav_categories">
-                            <NavLink to="/politics">Politics</NavLink>
+                            <NavLink to="/anime">Anime</NavLink>
                             <NavLink to="/history">History</NavLink>
+                            <NavLink to="/politics">Politics</NavLink>
+                            <NavLink to="/manga">Manga</NavLink>
                             <NavLink to="/religion">Religion</NavLink>
                             <NavLink to="/technology">Technology</NavLink>
                         </div> : ""}

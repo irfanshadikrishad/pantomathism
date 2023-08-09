@@ -185,6 +185,28 @@ router.get('/technology', (req, res) => {
         console.log(reject(`[!ok] technology : ${error}`));
     })
 })
+router.get('/anime', (req, res) => {
+    User.find({ "blog.categories": "anime" }).sort({ "blog.date": -1 }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] anime : ${error}`));
+    })
+})
+router.get('/manga', (req, res) => {
+    User.find({ "blog.categories": "manga" }).sort({ "blog.date": -1 }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] manga : ${error}`));
+    })
+})
 
 router.post('/panel', async (req, res) => {
     const { email, password } = await req.body;
