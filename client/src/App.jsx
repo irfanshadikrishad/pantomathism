@@ -19,6 +19,8 @@ import Panel from "./components/Panel";
 import Admin from "./components/Admin";
 import Anime from "./components/Anime";
 import Manga from "./components/Manga";
+import Trending from "./components/Trending";
+import User from "./components/User";
 import { initialState, reducer } from "./reducer/UserReducer";
 
 export const LoginContext = createContext();
@@ -42,6 +44,8 @@ const Routing = () => {
         <Route path="/panel/admin" element={<Admin />} />
         <Route path="/anime" element={<Anime />} />
         <Route path="/manga" element={<Manga />} />
+        <Route path="/trending" element={<Trending />} />
+        <Route path="/user/:userId" element={<User />} />
         <Route path="*" element={<E404 />} />
     </Routes>
 }

@@ -1,61 +1,46 @@
-import { useEffect, useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Card from "./Card";
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
-export default function Profile() {
+export default function User() {
+    const { userId } = useParams();
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        const callProfile = async () => {
-            const res = await fetch('http://localhost:3001/profile', {
+        const callUser = async () => {
+            const response = await fetch(`http://localhost:3001/user/${userId}`, {
                 method: "GET",
                 headers: {
-                    Accept: "application/json",
                     "Content-Type": "application/json"
-                },
-                credentials: "include"
+                }
             })
-
-            const data = await res.json();
-            await setUser(data);
-            await setBlogs(data.blog);
-
-            if (res.status === 200) {
-
+            const data = await response.json();
+            if (response.status === 200) {
+                setUser(data);
+                setBlogs(data.blog);
             } else {
-                navigate('/login');
+                navigate('/error404');
             }
         }
-        callProfile();
-    }, [navigate, user]);
+        callUser();
+    }, [navigate, userId])
     return (
-        <div className="container page">
+        <div className="container page user">
             <div className="content">
                 <img src="/favicon.png"
-                    alt="user image"
+                    alt="user pfp"
                     draggable="false" />
                 <div className="info">
                     <p>{user.name}</p>
-                    <a href={`mailto:${user.email}`} target="_blank">
+                    <a href={`mailto:${user.email}`}
+                        target="_blank" rel="noreferrer">
                         {<AlternateEmailIcon />}
                     </a>
                 </div>
                 <p>{user._id}</p>
-            </div>
-            <div className="logout__btns">
-                <NavLink
-                    to="/create"
-                    className="logout">
-                    Create a blog
-                </NavLink>
-                <NavLink
-                    to="/logout"
-                    className="logout">
-                    Log Out
-                </NavLink>
             </div>
             <div className="profile__blogs">
                 <div className="card__main">
@@ -73,6 +58,6 @@ export default function Profile() {
                     }
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

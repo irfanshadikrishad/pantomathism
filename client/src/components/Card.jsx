@@ -16,9 +16,11 @@ export default function Card(props) {
                 <NavLink to={`/${props.tag}`}>
                     <p className="tags">{<CategoryIcon />}{props.tag}</p>
                 </NavLink>
-                <p className="author">
-                    {<AccountCircleIcon />}{props.author}
+                <NavLink to={`/user/${props.id}`}>
+                    <p className="author">
+                        {<AccountCircleIcon />}{props.author}
                     </p>
+                </NavLink>
                 <p className="card__date">
                     {<AccessTimeFilledIcon />}{props.date}
                 </p>

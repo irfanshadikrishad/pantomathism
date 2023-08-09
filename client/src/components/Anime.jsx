@@ -26,6 +26,7 @@ export default function Anime() {
                         return animes.categories === "anime" ?
                             <Card
                                 key={animes._id}
+                                id={ani._id}
                                 title={animes.title}
                                 details={animes.description.slice(0, 250)}
                                 tag={animes.categories}

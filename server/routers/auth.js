@@ -109,7 +109,15 @@ router.post('/create', authorize, async (req, res) => {
 })
 
 router.get('/getall', (req, res) => {
-    User.find({}).sort({ "blog.createdAt": -1 }).then(data => {
+    User.find({}).sort({ createdAt: -1 }).then(data => {
+        console.log(data);
+        res.status(200).json(data);
+    }).catch(err => {
+        res.status(400).json(err)
+    })
+})
+router.get('/get3', (req, res) => {
+    User.find({}).sort({ updatedAt: -1 }).limit(1).then(data => {
         console.log(data);
         res.status(200).json(data);
     }).catch(err => {
@@ -149,6 +157,17 @@ router.get('/politics', (req, res) => {
         console.log(reject(`[!ok] politics : ${error}`));
     })
 })
+router.get('/politics3', (req, res) => {
+    User.find({ "blog.categories": "politics" }).limit(3).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] politics : ${error}`));
+    })
+})
 
 router.get('/history', (req, res) => {
     User.find({ "blog.categories": "history" }).then(data => {
@@ -161,7 +180,17 @@ router.get('/history', (req, res) => {
         console.log(reject(`[!ok] history : ${error}`));
     })
 })
-
+router.get('/history3', (req, res) => {
+    User.find({ "blog.categories": "history" }).limit(3).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] history : ${error}`));
+    })
+})
 router.get('/religion', (req, res) => {
     User.find({ "blog.categories": "religion" }).sort({ "blog.date": -1 }).then(data => {
         if (data) {
@@ -173,9 +202,30 @@ router.get('/religion', (req, res) => {
         console.log(reject(`[!ok] religion : ${error}`));
     })
 })
-
+router.get('/religion3', (req, res) => {
+    User.find({ "blog.categories": "religion" }).limit(3).sort({ "blog.date": -1 }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] religion : ${error}`));
+    })
+})
 router.get('/technology', (req, res) => {
     User.find({ "blog.categories": "technology" }).sort({ "blog.date": -1 }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] technology : ${error}`));
+    })
+})
+router.get('/technology3', (req, res) => {
+    User.find({ "blog.categories": "technology" }).limit(3).sort({ "blog.date": -1 }).then(data => {
         if (data) {
             res.status(200).json(data);
         } else {
@@ -196,8 +246,30 @@ router.get('/anime', (req, res) => {
         console.log(reject(`[!ok] anime : ${error}`));
     })
 })
+router.get('/anime3', (req, res) => {
+    User.find({ "blog.categories": "anime" }).limit(3).sort({ "blog.date": -1 }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] anime : ${error}`));
+    })
+})
 router.get('/manga', (req, res) => {
     User.find({ "blog.categories": "manga" }).sort({ "blog.date": -1 }).then(data => {
+        if (data) {
+            res.status(200).json(data);
+        } else {
+            res.status(404).json({ message: "No blogs available" });
+        }
+    }).catch(error => {
+        console.log(reject(`[!ok] manga : ${error}`));
+    })
+})
+router.get('/manga3', (req, res) => {
+    User.find({ "blog.categories": "manga" }).limit(3).sort({ "blog.date": -1 }).then(data => {
         if (data) {
             res.status(200).json(data);
         } else {
@@ -284,6 +356,21 @@ router.delete('/user/delete', admin, async (req, res) => {
         res.status(200).json({ message: "Deleted Successfully" })
     }).catch(error => {
         res.status(404).json({ message: error })
+    })
+})
+
+router.get('/user/:userId', async (req, res) => {
+    const { userId } = await req.params;
+    console.log(userId);
+    User.findOne({ _id: userId }).then(data => {
+        if (!data) {
+            res.status(404).json({ error: "404 Not Found" });
+        } else {
+            res.status(200).json(data);
+        }
+    }).catch(error => {
+        console.log(chalk.yellow(`[failure] userId : ${error.message}`));
+        res.status(404).json({ error: error });
     })
 })
 

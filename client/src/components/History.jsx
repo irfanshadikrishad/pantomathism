@@ -24,6 +24,7 @@ export default function History() {
                         return blo.categories === "history" ?
                             <Card
                                 key={blo._id}
+                                id={b._id}
                                 title={blo.title}
                                 details={blo.description.slice(0, 250)}
                                 tag={blo.categories}
