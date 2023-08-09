@@ -138,6 +138,7 @@ a.active {
     padding: 21px;
     border-radius: 10px;
     background-color: var(--secondary);
+    position: relative;
 }
 
 .card__top>a {
@@ -520,6 +521,7 @@ h1.blog__title {
     display: flex;
     align-items: center;
     gap: 5px;
+    font-size: 1rem;
     justify-content: center;
 }
 
@@ -539,10 +541,11 @@ p.admin__tag {
 }
 
 .admin__logout {
-    border: 3px solid var(--primary);
+    border: none;
     font-size: 1rem;
-    color: black;
-    padding: 5px 10px;
+    color: var(--secondary);
+    background-color: var(--primary);
+    padding: 10px 25px;
     border-radius: 2px;
     cursor: pointer;
     text-decoration: none;
@@ -573,7 +576,6 @@ p.admin__tag {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 10px;
-    padding-top: 10px;
 }
 
 button.user__delete {
@@ -711,6 +713,20 @@ section.container.home {
     padding: 20px 0;
 }
 
+.card__delete>button {
+    border: none;
+    color: salmon;
+    background-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.card__delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
 @media screen and (max-width:1800px) {
     .container {
         width: 80%;
@@ -764,6 +780,12 @@ section.container.home {
 }
 
 @media screen and (max-width:980px) {
+
+    .admin__header,
+    .admin__logout {
+        font-size: 0.8rem;
+    }
+
     .social__cards {
         grid-template-columns: 1fr 1fr;
     }
@@ -871,9 +893,17 @@ section.container.home {
     .register__right {
         justify-content: center;
     }
+
+    #menuPC {
+        right: 10%;
+    }
 }
 
 @media screen and (max-width:600px) {
+    .users {
+        padding-top: 2rem;
+    }
+
     .profile__table>tr>td {
         padding: 10px 10px;
     }
@@ -884,6 +914,11 @@ section.container.home {
 }
 
 @media screen and (max-width:500px) {
+
+    .admin__header {
+        font-size: 0.6rem;
+    }
+
     .the__title {
         font-size: 1.5rem;
     }
@@ -918,6 +953,11 @@ section.container.home {
     .login__left>img,
     .register__right>img {
         width: 100px;
+    }
+
+    .card {
+        padding: 2px;
+        gap: 0;
     }
 
     .card__bottom {

@@ -9,7 +9,7 @@ export default function Create() {
         name: "",
         email: ""
     });
-    const [cat, setCat] = useState('');
+    const [cat, setCat] = useState('other');
     const [blog, setBlog] = useState({
         title: "",
         description: ""
@@ -111,7 +111,7 @@ export default function Create() {
                             value={user.email}
                             type="email" />
                         <select name="category" id="category" onChange={handleCat}>
-                            <option defaultValue="other">other</option>
+                            <option value="other">other</option>
                             <option value="anime">Anime</option>
                             <option value="history">History</option>
                             <option value="manga">Manga</option>

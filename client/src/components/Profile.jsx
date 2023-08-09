@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import Card from "./Card";
+import CardProfile from "./CardProfile";
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 export default function Profile() {
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [blogs, setBlogs] = useState([]);
+    const [loader, setLoader] = useState(false);
 
     useEffect(() => {
         const callProfile = async () => {
@@ -20,26 +21,26 @@ export default function Profile() {
             })
 
             const data = await res.json();
-            await setUser(data);
-            await setBlogs(data.blog);
 
             if (res.status === 200) {
-
+                await setUser(data);
+                await setBlogs(data.blog);
             } else {
                 navigate('/login');
             }
         }
         callProfile();
-    }, [navigate, user]);
+    }, [navigate, loader]);
     return (
         <div className="container page">
             <div className="content">
                 <img src="/favicon.png"
-                    alt="user image"
+                    alt="user pfp"
                     draggable="false" />
                 <div className="info">
                     <p>{user.name}</p>
-                    <a href={`mailto:${user.email}`} target="_blank">
+                    <a href={`mailto:${user.email}`}
+                        target="_blank" rel="noreferrer">
                         {<AlternateEmailIcon />}
                     </a>
                 </div>
@@ -61,13 +62,16 @@ export default function Profile() {
                 <div className="card__main">
                     {
                         blogs.reverse().map(blog => {
-                            return <Card
+                            return <CardProfile
                                 key={blog._id}
+                                blogId={blog._id}
+                                id={user._id}
                                 title={blog.title}
                                 details={blog.description.slice(0, 250)}
                                 tag={blog.categories}
                                 author={blog.name}
                                 date={blog.date.slice(2, 10)}
+                                setLoader={setLoader}
                             />
                         })
                     }

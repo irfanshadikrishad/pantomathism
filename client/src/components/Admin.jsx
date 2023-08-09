@@ -53,7 +53,7 @@ export default function Admin() {
                 </div>
             </div>
             <div className="users">
-                <h1>Users (<span className="primary">{users.length}</span>)</h1>
+                <h1 className="the__title">Users (<span className="primary">{users.length}</span>)</h1>
                 <div className="user_cards">
                     {users.map((user, index) => {
                         return <AdminCard

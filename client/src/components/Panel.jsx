@@ -53,7 +53,7 @@ export default function Panel() {
                 <div className="panel__content">
 
                     <form onSubmit={handleSubmit} className="panel__form" method="post">
-                        <img src="https://i.pinimg.com/originals/f5/7c/87/f57c8766a1a37e76ae7c816a92e431ff.gif" alt="logoo" />
+                        <img src="https://media.tenor.com/UNaQFutfOF0AAAAi/banana-crying-cat.gif" alt="banana cat" />
                         <input
                             onChange={handleInput}
                             value={admin.email}
