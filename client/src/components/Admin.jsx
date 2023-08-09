@@ -10,7 +10,7 @@ export default function Admin() {
 
     useEffect(() => {
         const callAdmin = async () => {
-            const resp = await fetch('https://pantomathism.onrender.com/panel/admin', {
+            const resp = await fetch('http://localhost:3001/panel/admin', {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
@@ -27,7 +27,7 @@ export default function Admin() {
             }
         }
         const getAll = async () => {
-            const response = await fetch('https://pantomathism.onrender.com/getall', {
+            const response = await fetch('http://localhost:3001/getall', {
                 method: "GET",
                 headers: {
                     Accept: "application/json",

@@ -27,7 +27,7 @@ export default function Panel() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('https://pantomathism.onrender.com/panel', {
+        const response = await fetch('http://localhost:3001/panel', {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -51,7 +51,9 @@ export default function Panel() {
         <>
             <div className="container page">
                 <div className="panel__content">
+
                     <form onSubmit={handleSubmit} className="panel__form" method="post">
+                        <img src="https://i.pinimg.com/originals/f5/7c/87/f57c8766a1a37e76ae7c816a92e431ff.gif" alt="logoo" />
                         <input
                             onChange={handleInput}
                             value={admin.email}

@@ -27,7 +27,7 @@ export default function Login() {
         if (email === "" || password === "") {
             errorToast("Fill the form properly.");
         } else {
-            const response = await fetch("https://pantomathism.onrender.com/login", {
+            const response = await fetch("http://localhost:3001/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

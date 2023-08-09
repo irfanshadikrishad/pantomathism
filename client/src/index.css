@@ -1,7 +1,7 @@
 :root {
     --background: whitesmoke;
     --color: #252525;
-    --primary: slateblue;
+    --primary: #252525;
 }
 
 * {
@@ -21,7 +21,9 @@ body {
 }
 
 nav {
-    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    height: 70px;
     border-bottom: 1px solid white;
 }
 
@@ -29,24 +31,28 @@ nav {
     width: 35px;
 }
 
-.nav_btns {
+.nav_btns,
+#menuPC {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.nav_btns>a {
+.nav_btns>#menuPC>a {
     text-decoration: none;
     color: var(--color);
     font-weight: 500;
 }
 
-.nav_btns>button {
+.nav_btns>button,
+.nav_btns>#menuPC>button,
+.nav__menu {
     border: none;
     font-size: 1rem;
     color: var(--color);
     font-weight: 500;
     cursor: pointer;
+    background-color: transparent;
 }
 
 a.active {
@@ -330,37 +336,40 @@ form.login__right {
 .create__content {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 
 .create__info {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 5px;
+    gap: 10px;
 }
 
 .create__content>input,
 .create__content>textarea,
 .create__info>input {
-    padding: 5px 10px;
-    font-size: 1rem;
+    padding: 10px 10px;
+    font-size: 1.2rem;
     border: none;
     outline: none;
     background-color: white;
 }
 
 .create__content>textarea {
-    height: 500px;
+    height: 350px;
 }
 
 form.create__form {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 
 .create__form>button {
     width: 150px;
+    font-style: italic;
+    height: 40px;
+    font-weight: 600;
     font-size: 1rem;
     border: none;
     background-color: var(--primary);
@@ -368,7 +377,6 @@ form.create__form {
     padding: 5px 10px;
     cursor: pointer;
 }
-
 
 p.card_details {
     text-align: justify;
@@ -424,17 +432,28 @@ h1.blog__title {
     color: var(--primary);
 }
 
-form.panel__form {
+.panel__form>img {
+    width: 150px;
+    text-align: center;
+}
+
+.panel__form {
+    display: flex;
+    align-items: flex-start;
+}
+
+.panel__form {
     width: 50%;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 40px;
     background-color: white;
     border-radius: 2px;
     gap: 8px;
 }
 
 .panel__form>input {
+    width: 100%;
     padding: 10px 10px;
     font-size: 1rem;
     outline: none;
@@ -443,6 +462,7 @@ form.panel__form {
 }
 
 .panel__form>button {
+    width: 150px;
     padding: 10px;
     border: none;
     background-color: var(--primary);
@@ -588,4 +608,203 @@ p.author,
 
 .contact {
     padding: 10vw 0;
+}
+
+.blog__info>p,
+.blog__info>a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width:1800px) {
+    .container {
+        width: 80%;
+    }
+
+    .author,
+    .tags,
+    .card__date {
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width:1600px) {
+    .card__main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .user_cards {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .social__cards {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .user_cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width:1050px) {
+    .register__right>img {
+        width: 235px;
+    }
+
+    p.author,
+    .tags,
+    .card__date {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .about {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width:980px) {
+    .social__cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .panel__form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .card__main {
+        grid-template-columns: 1fr;
+    }
+
+    p.author,
+    .tags,
+    .card__date {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    #menuMobile {
+        display: inline-block;
+    }
+
+    #menuPC {
+        position: absolute;
+        flex-direction: column;
+        top: 77px;
+        right: 83px;
+        padding: 10px;
+        width: 150px;
+        border-radius: 5px;
+        background-color: var(--background);
+        z-index: 100;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .user_cards {
+        grid-template-columns: 1fr;
+    }
+
+    table.profile__table {
+        width: 100%;
+    }
+
+    .content {
+        overflow-x: auto;
+    }
+
+    .login__left>img,
+    .register__right>img {
+        position: static;
+        width: 150px;
+    }
+
+    .login__main {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .login__right>button,
+    .register__left>button {
+        width: 138px;
+    }
+
+    .register__main {
+        gap: 10px;
+        grid-template-columns: 1fr;
+    }
+
+    .register__left {
+        order: 1;
+    }
+
+    .register__right {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .profile__table>tr>td {
+        padding: 10px 10px;
+    }
+
+    .social__cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .the__title {
+        font-size: 1.5rem;
+    }
+
+    .card__bottom {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about__right>img {
+        width: 150px;
+    }
+
+    .about__left>p {
+        font-size: 1rem;
+        font-weight: 600;
+        opacity: 80%;
+    }
+
+    .about__left>h1 {
+        font-size: 1.5rem;
+    }
+
+    .logout__btns {
+        flex-direction: column;
+        align-items: self-end;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .card {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width:350px) {
+
+    .login__left>img,
+    .register__right>img {
+        width: 100px;
+    }
+
+    .card__bottom {
+        grid-template-columns: 1fr;
+    }
 }

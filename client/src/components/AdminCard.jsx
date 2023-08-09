@@ -30,7 +30,7 @@ export default function AdminCard(props) {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('https://pantomathism.onrender.com/user/delete', {
+        const response = await fetch('http://localhost:3001/user/delete', {
             method: "DELETE",
             headers: {
                 Accept: "application/json",

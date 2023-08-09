@@ -21,7 +21,7 @@ export default function Create() {
     function successToast(tweet) {
         toast.success(`${tweet}`, {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -33,7 +33,7 @@ export default function Create() {
     function errorToast(error) {
         toast.error(`${error}`, {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -45,7 +45,7 @@ export default function Create() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const resp = await fetch('https://pantomathism.onrender.com/create', {
+        const resp = await fetch('http://localhost:3001/create', {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -73,7 +73,7 @@ export default function Create() {
 
     useEffect(() => {
         const callData = async () => {
-            const response = await fetch('https://pantomathism.onrender.com/data', {
+            const response = await fetch('http://localhost:3001/data', {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
@@ -108,6 +108,7 @@ export default function Create() {
                             value={user.email}
                             type="email" />
                         <input
+                            required="true"
                             name="categories"
                             onChange={(e) => {
                                 setCat(e.target.value)

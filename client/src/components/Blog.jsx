@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, NavLink } from "react-router-dom";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CategoryIcon from '@mui/icons-material/Category';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 export default function Blog() {
     const { blogTitle } = useParams();
@@ -14,7 +17,7 @@ export default function Blog() {
 
     useEffect(() => {
         const callBlog = async () => {
-            const response = await fetch(`https://pantomathism.onrender.com/blogs/${blogTitle}`, {
+            const response = await fetch(`http://localhost:3001/blogs/${blogTitle}`, {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
@@ -37,9 +40,13 @@ export default function Blog() {
                 <h1 className="blog__title">{blog.title}</h1>
                 <p className="blog__details">{blog.description}</p>
                 <div className="blog__info">
-                    <p>{blog.name}</p>
-                    <NavLink to={`/${blog.categories}`}>{blog.categories}</NavLink>
-                    <p>{blog.date.slice(0, 10)}</p>
+                    <p>{<AccountCircleIcon />} {blog.name}</p>
+                    <NavLink to={`/${blog.categories}`}>
+                        {<CategoryIcon />} {blog.categories}
+                    </NavLink>
+                    <p>
+                        {<AccessTimeFilledIcon />} {blog.date.slice(0, 10)}
+                    </p>
                 </div>
             </div>
         </>

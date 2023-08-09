@@ -7,7 +7,7 @@ export default function Profile() {
 
     useEffect(() => {
         const callProfile = async () => {
-            const res = await fetch('https://pantomathism.onrender.com/profile', {
+            const res = await fetch('http://localhost:3001/profile', {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
