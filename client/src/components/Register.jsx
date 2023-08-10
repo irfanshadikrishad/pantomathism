@@ -35,7 +35,7 @@ export default function Register() {
             errorToast("Fill the form properly");
             return;
         } else {
-            const response = await fetch("hhttps://pantomathism.onrender.com/registration", {
+            const response = await fetch("https://pantomathism.onrender.com/registration", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

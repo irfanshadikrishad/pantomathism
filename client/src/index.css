@@ -914,6 +914,20 @@ section.container.home {
 }
 
 @media screen and (max-width:500px) {
+    .container {
+        width: 85%;
+    }
+
+    .blog__info {
+        flex-direction: column;
+        gap: 0;
+        margin-top: 10px;
+    }
+
+    .blog__info>a,
+    .blog__info>p {
+        margin-top: 2px;
+    }
 
     .admin__header {
         font-size: 0.6rem;
