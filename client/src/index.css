@@ -605,12 +605,13 @@ button.user__delete {
     color: var(--color);
 }
 
-p.author,
+.card__date,
 .tags,
-.card__date {
+p.author {
     align-items: center;
     display: flex;
     gap: 5px;
+    color: var(--background);
     justify-content: center;
 }
 
