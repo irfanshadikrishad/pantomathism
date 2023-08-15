@@ -1,19 +1,23 @@
-const express = require('express');
-const { hash, compare } = require('bcrypt');
-const chalk = require('chalk');
+import dotenv from "dotenv";
+import express from "express";
+import { hash, compare } from "bcrypt";
+import chalk from "chalk";
 const router = express.Router();
-const User = require('../models/user');
-const Admin = require('../models/admin');
-const authorize = require('../middleware/authorize');
-const admin = require('../middleware/admin');
-const _ = require('lodash');
+import User from "../models/user.js";
+import Admin from "../models/admin.js";
+import authorize from "../middleware/authorize.js";
+import admin from "../middleware/admin.js";
+import _ from "lodash";
+import { publicIpv4 } from 'public-ip';
 
+dotenv.config();
 const SALT = Number(process.env.SALT);
 const resolve = chalk.hex('#ACFADF');
 const reject = chalk.hex('#FF6666');
 
 router.post('/registration', async (req, res) => {
     const { name, email, password } = await req.body;
+    const public_ip = await publicIpv4();
     User.findOne({ email: email }).then(data => {
         if (data) {
             res.status(400).json({ message: "User already exists" });
@@ -26,7 +30,8 @@ router.post('/registration', async (req, res) => {
                     const user = new User({
                         name: name,
                         email: email,
-                        password: hash
+                        password: hash,
+                        ip: public_ip
                     });
                     user.save().then(data => {
                         res.status(201).json({ message: "Registration Successfull!" })
@@ -117,7 +122,7 @@ router.get('/getall', (req, res) => {
     })
 })
 router.get('/get3', (req, res) => {
-    User.find({}).sort({ updatedAt: -1 }).limit(1).then(data => {
+    User.find({}).limit(1).then(data => {
         console.log(data);
         res.status(200).json(data);
     }).catch(err => {
@@ -390,4 +395,4 @@ router.get('/user/:userId', async (req, res) => {
     })
 })
 
-module.exports = router;
+export default router;

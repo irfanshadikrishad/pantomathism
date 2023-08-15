@@ -54,7 +54,8 @@ export default function AdminCard(props) {
             <form method="delete" onSubmit={handleSubmit} className="card" key={props.id}>
                 <div>
                     <h3>{props.name} (<span className="culur">{props.blog}</span>)</h3>
-                    <p>{props.id}</p>
+                    <p className="id">{props.id}</p>
+                    <p className="ip">{props.ip}</p>
                 </div>
                 <div>
                     <ToastContainer />

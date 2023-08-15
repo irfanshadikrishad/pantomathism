@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function Anime() {
-    const [anime, setAnime] = useState([]);
+    const [anime, setAnime] = useState(null);
 
     const callAnime = async () => {
         const response = await fetch('https://pantomathism.onrender.com/anime', {
@@ -21,7 +21,7 @@ export default function Anime() {
     return (
         <div className="container page anime">
             <div className="card__main">
-                {anime.map(ani => {
+                {anime ? anime.map(ani => {
                     return ani.blog.map((animes, index) => {
                         return animes.categories === "anime" ?
                             <Card
@@ -34,7 +34,8 @@ export default function Anime() {
                                 date={animes.date.slice(2, 10)}
                             /> : null;
                     })
-                })}
+                }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                    alt="loading loader" width="75px" />}
             </div>
         </div>
     )

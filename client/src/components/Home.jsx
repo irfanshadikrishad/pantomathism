@@ -11,13 +11,13 @@ import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import BiotechIcon from '@mui/icons-material/Biotech';
 
 export default function Home() {
-    const [anime, setAnime] = useState([]);
-    const [manga, setManga] = useState([]);
-    const [politics, setPolitics] = useState([]);
-    const [history, setHistory] = useState([]);
-    const [religion, setReligion] = useState([]);
-    const [tech, setTech] = useState([]);
-    const [trend, setTrend] = useState([]);
+    const [anime, setAnime] = useState(null);
+    const [manga, setManga] = useState(null);
+    const [politics, setPolitics] = useState(null);
+    const [history, setHistory] = useState(null);
+    const [religion, setReligion] = useState(null);
+    const [tech, setTech] = useState(null);
+    const [trend, setTrend] = useState(null);
     const callTrend = async () => {
         const response = await fetch('https://pantomathism.onrender.com/get3', {
             method: "GET",
@@ -26,7 +26,7 @@ export default function Home() {
             }
         })
         const data = await response.json();
-        await setTrend(data);
+        await setTrend(data.reverse());
     }
     const callAnime = async () => {
         const response = await fetch('https://pantomathism.onrender.com/anime3', {
@@ -36,7 +36,7 @@ export default function Home() {
             }
         })
         const data = await response.json();
-        await setAnime(data);
+        await setAnime(data.reverse());
     }
     const callManga = async () => {
         const response = await fetch('https://pantomathism.onrender.com/manga3', {
@@ -46,7 +46,7 @@ export default function Home() {
             }
         })
         const data = await response.json();
-        await setManga(data);
+        await setManga(data.reverse());
     }
     const callPolitics = async () => {
         const response = await fetch('https://pantomathism.onrender.com/politics3', {
@@ -56,7 +56,7 @@ export default function Home() {
             }
         })
         const data = await response.json();
-        await setPolitics(data);
+        await setPolitics(data.reverse());
     }
     const callHistory = async () => {
         const response = await fetch('https://pantomathism.onrender.com/history3', {
@@ -66,7 +66,7 @@ export default function Home() {
             }
         })
         const data = await response.json();
-        await setHistory(data);
+        await setHistory(data.reverse());
     }
     const callReligion = async () => {
         const response = await fetch('https://pantomathism.onrender.com/religion3', {
@@ -76,7 +76,7 @@ export default function Home() {
             }
         })
         const data = await response.json();
-        await setReligion(data);
+        await setReligion(data.reverse());
     }
     const callTech = async () => {
         const response = await fetch('https://pantomathism.onrender.com/technology3', {
@@ -86,7 +86,7 @@ export default function Home() {
             }
         })
         const data = await response.json();
-        await setTech(data);
+        await setTech(data.reverse());
     }
     useEffect(() => {
         callTrend();
@@ -107,7 +107,7 @@ export default function Home() {
                     </NavLink>
                 </div>
                 <div className="card__main">
-                    {trend.map(trending => {
+                    {trend ? trend.map(trending => {
                         return trending.blog.map((lamborghini, index) => {
                             return index <= 2 ? <Card
                                 key={lamborghini._id
@@ -120,7 +120,8 @@ export default function Home() {
                                 date={lamborghini.date.slice(2, 10)}
                             /> : null
                         })
-                    })}
+                    }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                        alt="loading loader" width="75px" />}
                 </div>
             </section>
             <section>
@@ -131,7 +132,7 @@ export default function Home() {
                     </NavLink>
                 </div>
                 <div className="card__main">
-                    {anime.map(ani => {
+                    {anime ? anime.map(ani => {
                         return ani.blog.map((animes, index) => {
                             return animes.categories === "anime" ?
                                 <Card
@@ -144,7 +145,8 @@ export default function Home() {
                                     date={animes.date.slice(2, 10)}
                                 /> : null;
                         })
-                    })}
+                    }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                        alt="loading loader" width="75px" />}
                 </div>
             </section>
             <section>
@@ -155,7 +157,7 @@ export default function Home() {
                     </NavLink>
                 </div>
                 <div className="card__main">
-                    {manga.map(mango => {
+                    {manga ? manga.map(mango => {
                         return mango.blog.map((mongoo, index) => {
                             return mongoo.categories === "manga" ?
                                 <Card
@@ -168,7 +170,8 @@ export default function Home() {
                                     date={mongoo.date.slice(2, 10)}
                                 /> : null;
                         })
-                    })}
+                    }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                        alt="loading loader" width="75px" />}
                 </div>
             </section>
             <section>
@@ -179,7 +182,7 @@ export default function Home() {
                     </NavLink>
                 </div>
                 <div className="card__main">
-                    {tech.map(techno => {
+                    {tech ? tech.map(techno => {
                         return techno.blog.map((geek, index) => {
                             return geek.categories === "technology" ?
                                 <Card
@@ -192,7 +195,8 @@ export default function Home() {
                                     date={geek.date.slice(2, 10)}
                                 /> : null;
                         })
-                    })}
+                    }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                        alt="loading loader" width="75px" />}
                 </div>
             </section>
             <section>
@@ -203,7 +207,7 @@ export default function Home() {
                     </NavLink>
                 </div>
                 <div className="card__main">
-                    {history.map(historia => {
+                    {history ? history.map(historia => {
                         return historia.blog.map((histerical, index) => {
                             return histerical.categories === "history" ?
                                 <Card
@@ -216,7 +220,8 @@ export default function Home() {
                                     date={histerical.date.slice(2, 10)}
                                 /> : null;
                         })
-                    })}
+                    }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                        alt="loading loader" width="75px" />}
                 </div>
             </section>
             <section>
@@ -227,7 +232,7 @@ export default function Home() {
                     </NavLink>
                 </div>
                 <div className="card__main">
-                    {religion.map(religionion => {
+                    {religion ? religion.map(religionion => {
                         return religionion.blog.map((relation, index) => {
                             return relation.categories === "religion" ?
                                 <Card
@@ -240,7 +245,8 @@ export default function Home() {
                                     date={relation.date.slice(2, 10)}
                                 /> : null;
                         })
-                    })}
+                    }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                        alt="loading loader" width="75px" />}
                 </div>
             </section>
             <section>
@@ -251,7 +257,7 @@ export default function Home() {
                     </NavLink>
                 </div>
                 <div className="card__main">
-                    {politics.map(trash => {
+                    {politics ? politics.map(trash => {
                         return trash.blog.map((dumb, index) => {
                             return dumb.categories === "politics" ?
                                 <Card
@@ -264,7 +270,8 @@ export default function Home() {
                                     date={dumb.date.slice(2, 10)}
                                 /> : null;
                         })
-                    })}
+                    }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                        alt="loading loader" width="75px" />}
                 </div>
             </section>
         </section>

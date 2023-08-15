@@ -1,10 +1,12 @@
-require('dotenv').config();
-const { sign } = require('jsonwebtoken');
-const { Schema, model } = require('mongoose');
-const chalk = require('chalk');
+import dotenv from "dotenv";
+import pkg from "jsonwebtoken";
+import { Schema, model } from "mongoose";
+import chalk from "chalk";
 
 const resolve = chalk.hex('#ACFADF');
 const reject = chalk.hex('#FF6666');
+const { sign } = pkg;
+dotenv.config();
 
 const userSchema = new Schema({
     name: {
@@ -50,7 +52,12 @@ const userSchema = new Schema({
             type: String,
             required: true
         }
-    }]
+    }],
+    ip: {
+        type: String,
+        required: false,
+        default: null
+    }
 }, { timestamps: true });
 
 
@@ -87,4 +94,4 @@ userSchema.methods.addBlog = async function (name, email, categories, title, des
 
 const User = model('User', userSchema);
 
-module.exports = User;
+export default User;

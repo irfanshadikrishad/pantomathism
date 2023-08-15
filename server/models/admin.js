@@ -1,10 +1,12 @@
-require('dotenv').config();
-const { sign } = require('jsonwebtoken');
-const { Schema, model } = require('mongoose');
-const chalk = require('chalk');
+import dotenv from "dotenv";
+import pkg from "jsonwebtoken";
+import { Schema, model } from "mongoose";
+import chalk from "chalk";
 
+const { sign } = pkg;
 const resolve = chalk.hex('#ACFADF');
 const reject = chalk.hex('#FF6666');
+dotenv.config();
 
 const adminSchema = new Schema({
     name: {
@@ -46,4 +48,4 @@ adminSchema.methods.genJWT = async function () {
 
 const Admin = new model('Admin', adminSchema);
 
-module.exports = Admin;
+export default Admin;

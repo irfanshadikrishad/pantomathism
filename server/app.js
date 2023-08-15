@@ -1,11 +1,12 @@
-require('dotenv').config();
-const chalk = require('chalk');
-const cors = require('cors');
-const express = require('express');
-const { connect } = require('mongoose');
-const auth = require('./routers/auth');
-const cookieParser = require('cookie-parser');
+import dotenv from "dotenv";
+import chalk from "chalk";
+import cors from "cors";
+import express from "express";
+import { connect } from "mongoose";
+import auth from "./routers/auth.js";
+import cookieParser from "cookie-parser";
 
+dotenv.config();
 const PORT = process.env.PORT || 3001;
 const MONGO = process.env.MONGO;
 const resolve = chalk.hex('#ACFADF');

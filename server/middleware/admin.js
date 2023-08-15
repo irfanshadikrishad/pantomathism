@@ -1,9 +1,9 @@
-require('dotenv').config();
-const jwt = require('jsonwebtoken');
-const Admin = require('../models/admin');
-const chalk = require('chalk');
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+import Admin from "../models/admin.js";
+import chalk from "chalk";
 
-
+dotenv.config();
 const JWT_TOKEN = process.env.JWT_TOKEN;
 const resolve = chalk.hex('#ACFADF');
 const reject = chalk.hex('#FF6666');
@@ -27,9 +27,9 @@ const admin = async (req, res, next) => {
         next();
 
     } catch (error) {
-        console.log(reject(`[!ok] Authorization Failed : ${error}`));
+        console.log(reject(`[error] Authorization Failed : ${error} :admin-middleware-30`));
         res.status(401).json({ message: `Authorization Failed : ${error}` });
     }
 }
 
-module.exports = admin;
+export default admin;

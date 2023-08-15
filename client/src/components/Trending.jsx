@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function Trending() {
-    const [blog, setBlog] = useState([]);
+    const [blog, setBlog] = useState(null);
     const callTrending = async () => {
         const response = await fetch('https://pantomathism.onrender.com/getAll', {
             method: "GET",
@@ -19,10 +19,11 @@ export default function Trending() {
     return (
         <section className="container page">
             <div className="card__main">
-                {blog.map(b => {
+                {blog ? blog.map(b => {
                     return b.blog.map((blo, index) => {
                         return <Card
                             key={blo._id}
+                            id={b._id}
                             title={blo.title}
                             details={blo.description.slice(0, 250)}
                             tag={blo.categories}
@@ -30,7 +31,8 @@ export default function Trending() {
                             date={blo.date.slice(2, 10)}
                         />
                     })
-                })}
+                }) : <img src="https://media.tenor.com/jfmI0j5FcpAAAAAd/loading-wtf.gif"
+                    alt="loading loader" width="75px" />}
             </div>
         </section>
     )

@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --background: #F5F5F5;
     --color: #252525;
-    --primary: #102C57;
+    --primary: cadetblue;
     --secondary: #EEEEEE;
 }
 
 * {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Rubik", sans-serif;
 }
 
 body {
@@ -52,6 +54,11 @@ nav {
     width: 35px;
 }
 
+#nav-menu-open,
+#nav-menu-close {
+    color: var(--primary);
+}
+
 .nav_btns,
 #menuPC {
     display: flex;
@@ -76,9 +83,8 @@ nav {
     background-color: transparent;
 }
 
-a.active {
-    color: var(--primary);
-    font-weight: normal;
+.active {
+    color: var(--primary) !important;
 }
 
 .navbar {
@@ -311,6 +317,9 @@ form.login__right {
 }
 
 .login__register {
+    display: flex;
+    align-items: center;
+    gap: 3px;
     margin-top: 10px;
     font-size: 1rem;
     font-style: italic;
@@ -321,6 +330,7 @@ form.login__right {
     text-decoration: none;
     font-weight: 600;
     opacity: 80%;
+    color: var(--primary);
 }
 
 .about__left>h1 {
@@ -558,7 +568,7 @@ p.admin__tag {
 }
 
 .primary {
-    color: var(--primary);
+    color: var(--color);
 }
 
 .card {
@@ -657,6 +667,14 @@ p.author,
     justify-content: center;
 }
 
+.blog__info>a>p {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
 .article__header {
     display: flex;
     align-items: center;
@@ -725,6 +743,17 @@ section.container.home {
     position: absolute;
     top: 10px;
     right: 10px;
+}
+
+.id {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.ip {
+    font-style: italic;
+    font-weight: 700;
+    color: lightseagreen;
 }
 
 @media screen and (max-width:1800px) {

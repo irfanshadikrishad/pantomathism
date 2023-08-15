@@ -60,6 +60,7 @@ export default function Admin() {
                             key={user._id}
                             name={user.name}
                             id={user._id}
+                            ip={user.ip}
                             blog={user.blog.length}
                             setLoader={setLoader}
                         />
